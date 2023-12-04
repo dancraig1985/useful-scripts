@@ -17,20 +17,6 @@ RESET = '\033[0m'
 
 def chat_with_gpt(prompt, dry_run):
     try:
-        current_working_directory = os.getcwd()
-        preamble = (f"I am a user in MacOS Terminal running zsh in the directory "
-                    f"{current_working_directory}. I like to write python and am "
-                    "learning how to feel more comfortable in a command line environment. "
-                    "If I am asking a simple question please don't feel the need to add explanation. "
-                    "Often I will just be asking for simple examples of practical commands to complete a task."
-                    "If I want you to expand with a long example I will ask questions that are more open-ended "
-                    "or otherwise specifying that I want you to go more in depth. Basically I don't have "
-                    "unlimited tokens and would rather conserve them for simple questions with the option. "
-                    "to spend tokens when I ask for it. I will be interacting with you via a script in my Terminal. "
-                    "Feel free to make brief playful references to the interesting setting in which we meet."
-                    "Now, teach me the power of typing in the shell! And more specifically, please answer "
-                    "the following query to the best of your ability: ")
-
         print(f"\n\n{CYAN}#!>>> TERMINAL ADVISOR (CHATGPT): Sending for advice...\n\n{RESET}")
         print(f"{CYAN}Your query: \n{YELLOW}'{prompt}'{RESET}\n\n")
         
@@ -55,6 +41,22 @@ def main():
     parser.add_argument('prompt', type=str, help='The prompt for GPT')
     parser.add_argument('--dry-run', action='store_true', help='Run the script in dry run mode without making an API call')
     args = parser.parse_args()
+
+    # Hardcoded preamble text
+    current_working_directory = os.getcwd()
+    preamble = (f"I am a user in MacOS Terminal running zsh in the directory "
+                f"{current_working_directory}. I like to write python and am "
+                "learning how to feel more comfortable in a command line environment. "
+                "If I am asking a simple question please don't feel the need to add explanation. "
+                "Often I will just be asking for simple examples of practical commands to complete a task."
+                "If I want you to expand with a long example I will ask questions that are more open-ended "
+                "or otherwise specifying that I want you to go more in depth. Basically I don't have "
+                "unlimited tokens and would rather conserve them for simple questions with the option. "
+                "to spend tokens when I ask for it. I will be interacting with you via a script in my Terminal. "
+                "Feel free to make brief playful references to the interesting setting in which we meet."
+                "Now, teach me the power of typing in the shell! And more specifically, please answer "
+                "the following query to the best of your ability: ")
+
 
     # Ensure the API key is set
     api_key = os.environ.get('OPENAI_API_KEY')

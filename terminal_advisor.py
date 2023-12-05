@@ -35,7 +35,7 @@ def manage_conversation_history(storage_file, new_entry=None, max_history=100):
     return history
 
 def chat_with_gpt(prompt, dry_run, new_conversation):
-    storage_file = 'conversation_history.json'
+    storage_file = '.conversation_history.json'
 
     # Clear history file if new_conversation flag is True
     if new_conversation:
